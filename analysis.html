@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATTENTION V2 · 实验结果与原论文对照</title>
+<style>
+  :root{--ink:#202435;--muted:#485269;--paper:#f5f5ee;--line:#d3d9e3;--lime:#e0f371;--navy:#1f2a43;--blue:#264f91;--panel:#fff;--tint:#edf3ff}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.72 system-ui,"Microsoft YaHei",sans-serif}
+  a{color:var(--blue);text-underline-offset:.22em}a:focus-visible,[tabindex]:focus-visible{outline:3px solid #557b18;outline-offset:4px}
+  header{background:var(--navy);color:white;border-bottom:8px solid var(--lime)}
+  .wrap{width:min(1080px,calc(100% - 36px));margin-inline:auto}
+  .hero{padding:38px 0 34px}.tag{display:inline-block;border:1px solid #b2c0dc;padding:4px 12px;border-radius:99px;color:#e4edff;font-size:.8rem;font-weight:700;letter-spacing:.08em}
+  h1,h2,h3{line-height:1.22;margin:0;font-weight:780}h1{font-size:clamp(2rem,5vw,3.4rem);margin:15px 0 10px}
+  h2{font-size:clamp(1.55rem,3.5vw,2.2rem)}h3{font-size:1.19rem;margin:24px 0 8px}
+  p{margin:9px 0 12px}.hero p{color:#e2ebff;max-width:54rem}.meta{font-size:.88rem}
+  nav{display:flex;gap:10px 22px;flex-wrap:wrap;padding:14px 0;font-size:.92rem;font-weight:680;border-bottom:1px solid var(--line)}
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+  .card strong{display:block;font-size:1.65rem;color:var(--navy)}.card span{font-size:.92rem;color:var(--muted)}
+  section{margin:20px 0;padding:24px 26px;background:var(--panel);border:1px solid var(--line);border-radius:15px;scroll-margin-top:12px}
+  .number{display:inline-grid;place-items:center;background:var(--lime);color:#202a18;font-size:.8em;border-radius:7px;width:1.7em;height:1.5em;margin-right:10px}
+  .callout{border-left:4px solid #81a13c;background:#f1f6de;padding:10px 13px;margin:15px 0}
+  .details,.small{color:var(--muted);font-size:.91rem}
+  .table-wrap{overflow-x:auto;margin:15px 0 20px}
+  table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:.91rem}
+  caption{text-align:left;color:var(--ink);font-weight:750;margin:3px 0 8px}
+  td,th{text-align:right;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+  td:first-child,th:first-child{text-align:left}
+  thead th{color:var(--navy);background:var(--tint)}
+  tbody th{font-weight:650}tbody tr:nth-child(even){background:#f8fafc}
+  .figure{margin:12px 0;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#fbfcff}
+  figcaption{font-weight:730}figcaption small{display:block;font-weight:500;color:var(--muted)}
+  .chart-wrap{overflow-x:auto}.chart-wrap svg{display:block;width:100%;min-width:435px;height:auto}
+  .svg-tick,.svg-label{fill:#37445b;font-size:13px}.svg-label{font-weight:650}.svg-grid{stroke:#d8e1ee}.svg-zero{stroke:#56657b;stroke-width:1.5;stroke-dasharray:4 3}.svg-ci{stroke:#456aab;stroke-width:2;fill:none}.svg-point{fill:#264f91;stroke:white;stroke-width:1.5}
+  .compare article+article{border-top:1px solid var(--line);margin-top:15px}.compare article h3{margin-top:18px}
+  footer{margin:22px 0 30px;color:var(--muted);font-size:.9rem}
+  @media(max-width:610px){.wrap{width:calc(100% - 22px)}.hero{padding:24px 0}.summary{gap:6px}.card{padding:8px}.card strong{font-size:1.25rem}.card span{font-size:.77rem}section{padding:17px 13px}td,th{padding:6px}.figure{padding:8px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media print{body{background:#fff}header{background:white;color:black;border-bottom:3px solid #536c30}.hero p,.tag{color:#222}nav{display:none}section,.figure{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="wrap hero">
+  <span class="tag">ATTENTION V2 · 工程心理学作业二</span>
+  <h1>实验结果与原论文对照</h1>
+  <p>城市四屏监控（SEEV）与中英情绪 Stroop</p>
+  <p class="meta">公开数据快照 · 2026-11-09 02:33（北京时间） · 协议 patrol-2.0.0</p>
+</div></header>
+<main class="wrap">
+<nav aria-label="结果目录"><a href="#seev">四屏监控</a><a href="#stroop">Stroop</a><a href="#papers">原论文对照</a><a href="#method">数据与算法</a></nav>
+<div class="summary" aria-label="样本概览">
+  <div class="card"><strong>5 人</strong><span>SEEV · 200 条正式记录</span></div>
+  <div class="card"><strong>5 人</strong><span>Stroop · 150 条正式记录</span></div>
+  <div class="card"><strong>0 人</strong><span>SEEV · 达标眼动</span></div>
+</div>
+
+<section id="seev" aria-labelledby="seev-title">
+  <h2 id="seev-title"><span class="number">1</span>四屏监控</h2>
+  <p>比较高优先级窗口采用相邻布局与交错布局时的报告表现。未正确报告包括超时漏报和按错窗口，差值统一为<strong>相邻减交错</strong>。</p>
+  <p class="callout">高优先级异常的未正确报告率由 <strong>2.0%</strong>（交错）到 <strong>6.0%</strong>（相邻），平均差 <strong>+4.0 个百分点</strong>。两组高优先级异常均无漏报，这一差值来自错报。正确反应时平均差为 -6.0 毫秒，置信区间较宽。</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="各布局与优先级的表现"><table><caption>各布局与优先级的表现</caption><thead><tr><th scope="col">条件</th><th scope="col">有效异常</th><th scope="col">正确</th><th scope="col">漏报</th><th scope="col">错报</th><th scope="col">未正确报告率</th><th scope="col">正确 RT（ms）</th><th scope="col">RT 人数</th></tr></thead><tbody><tr><th scope="row">交错 · 高优先级</th><td>50</td><td>49</td><td>0</td><td>1</td><td>2.0%</td><td>644.2</td><td>5</td></tr><tr><th scope="row">交错 · 普通</th><td>50</td><td>47</td><td>1</td><td>2</td><td>6.0%</td><td>721.2</td><td>5</td></tr><tr><th scope="row">相邻 · 高优先级</th><td>50</td><td>47</td><td>0</td><td>3</td><td>6.0%</td><td>638.2</td><td>5</td></tr><tr><th scope="row">相邻 · 普通</th><td>50</td><td>45</td><td>2</td><td>3</td><td>10.0%</td><td>614.8</td><td>5</td></tr></tbody></table></div>
+  <p class="small">有效空窗区段中，交错布局共 15 次误报，相邻布局共 7 次。空窗误报与异常错报分别计数。正式记录中未见眼动模式试次。达标眼动人数为 0，两布局眼动配对人数为 0。</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="高优先级窗口的配对效应"><table><caption>高优先级窗口的配对效应</caption><thead><tr><th scope="col">指标</th><th scope="col">配对人数</th><th scope="col">平均差</th><th scope="col">单位</th><th scope="col">差值 SD</th><th scope="col">95% CI</th><th scope="col">Cohen’s d<sub>z</sub></th></tr></thead><tbody><tr><th scope="row">未正确报告率</th><td>5</td><td>+4.0</td><td>百分点</td><td>11.4</td><td>-10.2 至 +18.2</td><td>+0.35</td></tr><tr><th scope="row">漏报率</th><td>5</td><td>0.0</td><td>百分点</td><td>0.0</td><td>—</td><td>—</td></tr><tr><th scope="row">错报率</th><td>5</td><td>+4.0</td><td>百分点</td><td>11.4</td><td>-10.2 至 +18.2</td><td>+0.35</td></tr><tr><th scope="row">正确反应时</th><td>5</td><td>-6.0</td><td>ms</td><td>91.9</td><td>-120.1 至 +108.1</td><td>-0.07</td></tr><tr><th scope="row">高优先窗口注视比例</th><td>0</td><td>—</td><td>百分点</td><td>—</td><td>—</td><td>—</td></tr></tbody></table></div>
+  <figure class="figure"><figcaption>主要行为效应 · 未正确报告率<small>圆点是平均配对差，横线是 95% 置信区间。</small></figcaption>
+  <div class="chart-wrap"><svg viewBox="0 0 710 124" role="img" aria-labelledby="seev-forest-title">
+  <title id="seev-forest-title">主要行为效应 · 未正确报告率（百分点）</title><line class="svg-grid" x1="130" x2="130" y1="14" y2="72"/><line class="svg-grid" x1="268" x2="268" y1="14" y2="72"/><line class="svg-zero" x1="406" x2="406" y1="14" y2="72"/><line class="svg-grid" x1="544" x2="544" y1="14" y2="72"/><line class="svg-grid" x1="682" x2="682" y1="14" y2="72"/><text class="svg-label" x="4" y="45">相邻 − 交错</text><line class="svg-ci" x1="265.8313681788438" x2="656.5686318211563" y1="40" y2="40"/>
+    <path class="svg-ci" d="M265.8313681788438 35v10 M656.5686318211563 35v10"/><circle class="svg-point" cx="461.2" cy="40" r="6"/><text class="svg-tick" x="130" y="96" text-anchor="middle">−20</text><text class="svg-tick" x="268" y="96" text-anchor="middle">−10</text><text class="svg-tick" x="406" y="96" text-anchor="middle">0</text><text class="svg-tick" x="544" y="96" text-anchor="middle">+10</text><text class="svg-tick" x="682" y="96" text-anchor="middle">+20</text>
+  <text class="svg-tick" x="406" y="118" text-anchor="middle">效应差（百分点）</text>
+  </svg></div></figure>
+</section>
+
+<section id="stroop" aria-labelledby="stroop-title">
+  <h2 id="stroop-title"><span class="number">2</span>中英情绪 Stroop</h2>
+  <p class="callout">中文和英文的干扰平均差分别为 <strong>+63.4 ms</strong> 和 <strong>+141.7 ms</strong>。情绪词与中性词的平均差为 <strong>+4.3 ms</strong>。三个估计的 95% 置信区间均跨过零。</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="各条件的表现"><table><caption>各条件的表现</caption><thead><tr><th scope="col">条件</th><th scope="col">有效试次</th><th scope="col">正确试次</th><th scope="col">正确率</th><th scope="col">正确 RT（ms）</th><th scope="col">RT 人数</th></tr></thead><tbody><tr><th scope="row">中文 · 一致</th><td>25</td><td>20</td><td>80.0%</td><td>806.0</td><td>5</td></tr><tr><th scope="row">中文 · 不一致</th><td>25</td><td>23</td><td>92.0%</td><td>869.4</td><td>5</td></tr><tr><th scope="row">英文 · 一致</th><td>25</td><td>19</td><td>76.0%</td><td>656.0</td><td>4</td></tr><tr><th scope="row">英文 · 不一致</th><td>25</td><td>24</td><td>96.0%</td><td>937.6</td><td>5</td></tr><tr><th scope="row">情绪 · 中性词</th><td>25</td><td>24</td><td>96.0%</td><td>750.0</td><td>5</td></tr><tr><th scope="row">情绪 · 负性词</th><td>25</td><td>25</td><td>100.0%</td><td>754.4</td><td>5</td></tr></tbody></table></div>
+  <p class="small">英文一致条件中有 1 人没有正确试次，因此英文干扰和中文减英文的反应时差均使用 4 个配对。该参与者的有效试次仍计入正确率。条件均值可以来自不同人数，配对效应按同一参与者的条件差计算。</p>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="反应时配对效应"><table><caption>反应时配对效应</caption><thead><tr><th scope="col">指标</th><th scope="col">配对人数</th><th scope="col">平均差</th><th scope="col">单位</th><th scope="col">差值 SD</th><th scope="col">95% CI</th><th scope="col">Cohen’s d<sub>z</sub></th></tr></thead><tbody><tr><th scope="row">中文 · 不一致 − 一致</th><td>5</td><td>+63.4</td><td>ms</td><td>211.9</td><td>-199.8 至 +326.5</td><td>+0.30</td></tr><tr><th scope="row">英文 · 不一致 − 一致</th><td>4</td><td>+141.7</td><td>ms</td><td>217.5</td><td>-204.4 至 +487.9</td><td>+0.65</td></tr><tr><th scope="row">情绪 · 负性 − 中性</th><td>5</td><td>+4.3</td><td>ms</td><td>86.5</td><td>-103.0 至 +111.7</td><td>+0.05</td></tr><tr><th scope="row">中文干扰 − 英文干扰</th><td>4</td><td>-67.8</td><td>ms</td><td>130.3</td><td>-275.2 至 +139.5</td><td>-0.52</td></tr></tbody></table></div>
+  <figure class="figure"><figcaption>Stroop 反应时差<small>圆点是平均配对差，横线是 95% 置信区间。</small></figcaption>
+  <div class="chart-wrap"><svg viewBox="0 0 710 250" role="img" aria-labelledby="stroop-forest-title">
+  <title id="stroop-forest-title">Stroop 反应时差（毫秒）</title><line class="svg-grid" x1="130" x2="130" y1="14" y2="198"/><line class="svg-grid" x1="268" x2="268" y1="14" y2="198"/><line class="svg-zero" x1="406" x2="406" y1="14" y2="198"/><line class="svg-grid" x1="544" x2="544" y1="14" y2="198"/><line class="svg-grid" x1="682" x2="682" y1="14" y2="198"/><text class="svg-label" x="4" y="45">中文干扰</text><line class="svg-ci" x1="295.73421990790496" x2="586.2041800920952" y1="40" y2="40"/>
+    <path class="svg-ci" d="M295.73421990790496 35v10 M586.2041800920952 35v10"/><circle class="svg-point" cx="440.9692" cy="40" r="6"/><text class="svg-label" x="4" y="87">英文干扰</text><line class="svg-ci" x1="293.1634781416409" x2="675.3009218583592" y1="82" y2="82"/>
+    <path class="svg-ci" d="M293.1634781416409 77v10 M675.3009218583592 77v10"/><circle class="svg-point" cx="484.2322" cy="82" r="6"/><text class="svg-label" x="4" y="129">负性 − 中性</text><line class="svg-ci" x1="349.1208420587759" x2="467.67051794122403" y1="124" y2="124"/>
+    <path class="svg-ci" d="M349.1208420587759 119v10 M467.67051794122403 119v10"/><circle class="svg-point" cx="408.39567999999997" cy="124" r="6"/><text class="svg-label" x="4" y="171">中文 − 英文</text><line class="svg-ci" x1="254.0998439103999" x2="483.00755608960014" y1="166" y2="166"/>
+    <path class="svg-ci" d="M254.0998439103999 161v10 M483.00755608960014 161v10"/><circle class="svg-point" cx="368.55370000000005" cy="166" r="6"/><text class="svg-tick" x="130" y="222" text-anchor="middle">−500</text><text class="svg-tick" x="268" y="222" text-anchor="middle">−250</text><text class="svg-tick" x="406" y="222" text-anchor="middle">0</text><text class="svg-tick" x="544" y="222" text-anchor="middle">+250</text><text class="svg-tick" x="682" y="222" text-anchor="middle">+500</text>
+  <text class="svg-tick" x="406" y="244" text-anchor="middle">效应差（毫秒）</text>
+  </svg></div></figure>
+</section>
+
+<section id="papers" class="compare" aria-labelledby="papers-title">
+  <h2 id="papers-title"><span class="number">3</span>与原论文对照</h2>
+  <article><h3>SEEV · Horrey、Wickens 与 Consalus（2006）</h3>
+  <p>原研究在驾驶模拟中操纵驾驶任务和车载任务的优先级。实验一中，道路优先与车载任务优先时，注视外部道路的时间占比约为 73% 和 49%。车载任务优先时，其反应时约为 0.76 秒，道路优先时约为 1.70 秒。本作业固定每段两扇高优先窗口，操纵的是它们的空间排列，主要指标是未正确报告率。样本中的相邻布局未正确报告率高出 4.0 个百分点，且暂无眼动配对，因此目前无法直接检验原研究中优先级改变注视分配的结果。<a href="https://pubmed.ncbi.nlm.nih.gov/16802889/">原论文摘要</a> · <a href="https://citeseerx.ist.psu.edu/document?doi=5656c59050de9d92ea12f8fd558423a1dbd59df6&amp;repid=rep1&amp;type=pdf">原论文表 1 与实验一结果</a></p></article>
+  <article><h3>经典色词干扰 · Stroop（1935）</h3>
+  <p>原研究的实验二中，口头报告 100 个不一致色词的墨色，比报告 100 个彩色方块多用 47.0 秒。这里中文和英文的平均差也都朝不一致条件更慢的方向。原研究用彩色方块作基线并记录整表口头作答时间，本作业用一致色词作基线并记录逐题键盘反应，效应量级需按各自任务理解。<a href="https://psychclassics.yorku.ca/Stroop/">原文实验二</a></p></article>
+  <article><h3>中英双语 Stroop · Coderre 等（2013）</h3>
+  <p>原研究的实验三测试了 22 名普通话为第一语言、英语为第二语言的双语者。以不一致减中性控制计，中文在词与颜色同时出现时的干扰为 40 ms，英语在词先出现 200 ms 时报告了 30 ms 的干扰。两项数字对应不同的呈现时序。本作业采用同时呈现和一致色词基线。共有配对中，中文干扰减英文干扰为 -67.8 ms（95% CI -275.2 至 +139.5 ms），样本和区间都不足以判断语言间差异是否稳定。<a href="https://doi.org/10.1017/S1366728912000405">原论文实验三</a></p></article>
+  <article><h3>情绪词 · Algom、Chajut 与 Lev（2004）</h3>
+  <p>原研究报告情绪词能拖慢多种任务，但在情绪词和中性词混合于同一组时未观察到这种延迟。本作业也把两类词混在同一模块，样本平均差仅 +4.3 ms，描述上接近该研究的混合呈现结果。置信区间较宽，仍不足以确认效应为零。<a href="https://pubmed.ncbi.nlm.nih.gov/15355142/">原论文摘要</a></p></article>
+</section>
+
+<section id="method" aria-labelledby="method-title">
+  <h2 id="method-title"><span class="number">4</span>数据与算法</h2>
+  <p>数据来自 ATTENTION V2 实验站配置的公开匿名接口。每项实验独立按匿名编号去重，保留 patrol-2.0.0 的正式记录并校验试次总数、序号及条件数量。SEEV 纳入 200/200 条有效试次，Stroop 纳入 150/150 条有效试次。页面使用固定快照，展示汇总数据。<a href="https://qiu-zf.github.io/qiuzhaofeng_attention/">实验站</a></p>
+  <p>先按参与者计算各条件的正确率和正确反应时均值，再对参与者等权平均。比较条件时，先为同一参与者求差，再汇总均值、样本标准差和配对 95% t 置信区间。Cohen’s d<sub>z</sub> 为配对均值差除以配对差的样本标准差。差值无变异或无有效配对时，相关统计量以「—」表示。RT 指反应时，单位 ms。</p>
+  <p>两项实验分别有 5 个不同的匿名编号。若需确认均为他人作答，须结合招募记录。Stroop 每条件 5 次，低于作业说明的每条件 10 次，配对人数也有限，因此这里的估计作为小样本描述解读。无眼动配对时无法检验凝视分布。</p>
+  <p class="small">公开接口 · <a href="https://attention-lab-production.up.railway.app/api/hw2/data?project=ELX893&amp;experiment=seev_city_monitor">SEEV</a> · <a href="https://attention-lab-production.up.railway.app/api/hw2/data?project=EVE2EL&amp;experiment=stroop_v2">Stroop</a></p>
+</section>
+<footer>ATTENTION V2 · 工程心理学实验报告</footer>
+</main>
+</body>
+</html>
